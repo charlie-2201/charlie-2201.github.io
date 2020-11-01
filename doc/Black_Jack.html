@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        .navbar-inverse {
+            background-color: black;
+            border-color: #080808;
+        }
+        .color-white {
+            color: white !important;
+        }
+        .dropdown-menu {
+            max-height: 500px;
+            overflow: scroll;
+        }
+
+        .myimage {
+            background-image: url(Background_Image.jpg);
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="myimage">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand color-white" href="#">Game Of Cards</a>
+            </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary btn-success" data-toggle="modal" data-target="#exampleModal">
+                Play New Game
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Enter Player Names</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="Player 1">Player 1</span>
+                                </div>
+                                <input type="text" class="form-control" id="Player1name" placeholder="Player-name"
+                                    aria-label="Player 1" aria-describedby="Player 1">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="Player 2">Player 2</span>
+                                </div>
+                                <input type="text" class="form-control" id="Player2name" placeholder="Player-name"
+                                    aria-label="Player 2" aria-describedby="Player 2">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="Player 3">Player 3</span>
+                                </div>
+                                <input type="text" class="form-control" id="Player3name" placeholder="Player-name"
+                                    aria-label="Player 3" aria-describedby="Player 3">
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div>
+                                    <h5>Instructions List</h5>
+                                    <ol class="list-group list-group-flush">
+                                        <li class="list-group-item">1. ACE IS 1, KING IS 11, QUEEN IS 11, JACK IS 11
+                                        </li>
+                                        <li class="list-group-item">2. HIT FOR CARDS AND ADD SUM</li>
+                                        <li class="list-group-item">3. SUM > 21 IS LOSS, PRESS STAND</li>
+                                        <li class="list-group-item">4. YOU WIN BET IF YOUR SUM > DEALER SUM</li>
+                                    </ol>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary btn-danger"
+                                    data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary btn-success" onclick="Savechanges()">Save
+                                    changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </nav>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2">
+                <table class="table table-dark">
+                    <thead>
+                        <tr><center>
+                            <th scope="col">Denominations</th></center>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><button type="button" onclick="add100()"
+                                    class="btn btn-success" style="margin-right: 35px">+</button><button
+                                    type="button"
+                                    class="btn btn-primary">100</button><button
+                                    type="button" onclick="sub100()" class="btn btn-danger" style="margin-left: 35px">-</button></th>
+                        </tr>
+                        <tr>
+                            <th scope="row"><button type="button" onclick="add200()"
+                                    class="btn btn-success" style="margin-right: 35px">+</button><button
+                                    type="button"
+                                    class="btn btn-primary">200</button><button
+                                    type="button" onclick="sub200()" class="btn btn-danger" style="margin-left: 35px">-</button></th>
+
+                        </tr>
+                        <tr>
+                            <th scope="row"><button type="button" onclick="add500()"
+                                    class="btn btn-success" style="margin-right: 35px">+</button><button
+                                    type="button"
+                                    class="btn btn-primary">500</button><button
+                                    type="button" onclick="sub500()" class="btn btn-danger" style="margin-left: 35px">-</button></th>
+                        </tr>
+                        <tr>
+                            <th scope="row"><button type="button" onclick="add1000()"
+                                    class="btn btn-success" style="margin-right: 30px">+</button><button
+                                    type="button"
+                                    class="btn btn-primary">1000</button><button
+                                    type="button" onclick="sub1000()" class="btn btn-danger" style="margin-left: 30px">-</button></th>
+                        </tr>
+                        <tr>
+                            <center>
+                                <th scope="row"><button type="button" onclick="dn()" id="done"
+                                        class="btn btn-primary" style="margin-left: 65px">Done</button></th>
+                            </center>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Turn</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <center>
+                            <th scope="row"><button type="button" onclick="hit()" class="btn btn-success"
+                                    id="Hit" style="margin-left: 35px">Hit</button></th>
+                        </center>
+                        <center>
+                            <th scope="row"><button type="button" onclick="stand()" class="btn btn-danger"
+                                    id="Stand">Stand</button></th>
+                        </center>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-2">
+                <div class="card" style="width: 6rem; height: 8rem;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p1image1">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p1image2">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p1image3">
+                </div>
+                <div class="" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 127px;"
+                        id="p1image4">
+                </div><br><b id="p1onpage" style="margin-left: 15px">PLAYER-1</b>
+                <div class="c" style="width: 6rem; height: 7rem;">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p2image1">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p2image2">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p2image3">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 127px;"
+                        id="p2image4">
+                </div><br><b id="p2onpage" style="margin-left: 15px">PLAYER-2</b><br>
+            </div>
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-2">
+                <div class="card" style="width: 6rem; height: 8rem;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p3image1">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p3image2">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p3image3">
+                </div>
+                <div class="" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 127px;"
+                        id="p3image4">
+                </div><br><b id="p3onpage" style="margin-left: 15px">PLAYER-3</b>
+                <div class="c" style="width: 6rem; height: 7rem;">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p4image1">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p4image2">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 98px;"
+                        id="p4image3">
+                </div>
+                <div class="card" style="width: 6rem; height: 8rem; position: relative; margin-top: -95px;">
+                    <img class="card-img-top" src="Card_Back.jpg" alt="Card image cap" style="width: 96px; height: 127px;"
+                        id="p4image4">
+                </div><br><b style="margin-left: 15px">DEALER</b><br>
+            </div>
+            <div class="col-sm-1">
+
+            </div>
+            <div class="col-sm-2">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Player</th>
+                            <th scope="col">Bet Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" id="bet1name">Player 1</th>
+                            <th id="bet1">0</th>
+                        </tr>
+                        <tr>
+                            <th scope="row" id="bet2name">Player 2</th>
+                            <th id="bet2">0</th>
+                        </tr>
+                        <tr>
+                            <th scope="row" id="bet3name">Player 3</th>
+                            <th id="bet3">0</th>
+                        </tr>
+                        <tr>
+                            <th scope="row" id="bet4name">Dealer</th>
+                            <th id="bet4">0</th>
+                        </tr>
+                    </tbody>
+                </table>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Balance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" id="bal1name">Player 1</th>
+                            <td id="bal1">5000</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" id="bal2name">Player 2</th>
+                            <td id="bal2">5000</td>
+                        </tr>
+                        <tr>
+                            <th scope="row" id="bal3name">Player 3</th>
+                            <td id="bal3">5000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="Black_Jack.js"></script>
+</body>
+
+</html>
