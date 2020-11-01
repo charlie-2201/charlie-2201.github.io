@@ -11,6 +11,8 @@ Rules--
 
 Worked on developing a browser based black jack game. Technologies used - HTML, CSS, Bootstrap, JavaScript
 
+You can visit at https://charlie-2201.github.io/Black_Jack.html
+
 Team Members:
 
 Manik Agarwal (#charlie-2201) https://www.linkedin.com/in/manik-agarwal-30a66380/
